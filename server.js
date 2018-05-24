@@ -35,6 +35,10 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
 
+hbs.registerHelper('portfoio', () => {
+    return 'protfolio page here';
+});
+
 app.get('/', (req, res) => {
     // res.send('<h1>express</h1>');
     // res.send({
@@ -60,7 +64,13 @@ app.get('/bad', (req, res) => {
     res.send({
         errorMessage: 'Unable to handle request'
     })
-})
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Portfolio Page'
+    });
+});
 
 app.listen(port, () => {
     console.log(`server is up to port ${port}`);
